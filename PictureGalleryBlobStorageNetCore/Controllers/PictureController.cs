@@ -13,9 +13,11 @@ namespace PictureGalleryBlobStorageNetCore.Controllers
 {
   public class PictureController : Controller
   {
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-      return View(model: new List<Picture>());
+      // TODO : obtenir la liste des images de BlobStorageManager
+      var pictures = new List<Picture>();
+      return View(model: pictures );
     }
     // Action pour voir la page du formulaire
     public IActionResult Upload()
@@ -33,7 +35,7 @@ namespace PictureGalleryBlobStorageNetCore.Controllers
     {
       if (!ModelState.IsValid)
         return View();
-      // TODO : utiliser BlobStorageManager pour sauvegarder la liste des images
+      // TODO : utiliser BlobStorageManager pour sauvegarder l'image uploadée
       return RedirectToAction(nameof(Index));
     }
   }
